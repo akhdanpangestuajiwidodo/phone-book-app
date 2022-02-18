@@ -1,10 +1,8 @@
 import "./App.css";
-import Popup from "reactjs-popup";
 import { useState, useEffect } from "react";
 import "reactjs-popup/dist/index.css";
 import List from "./List";
-import { uid } from "uid";
-import { SearchBar } from "./SearchBar";
+import PopupInput from "./components/PopupInput";
 
 type formDataItem = {
   id: string;
@@ -31,38 +29,6 @@ function App() {
 
   //Hooks updateStatus
   const [isUpdate, setIsUpdate] = useState({ id: null, status: false });
-
-  //onSubmitForm or save Data
-  const onSubmitFormHandler = (event: any) => {
-    event.preventDefault();
-
-    let data = [...contacts];
-
-    if (formData.name === "" || formData.phoneNumber === "") {
-      alert("Harus Diisi yah");
-      return false;
-    }
-
-    if (isUpdate.status) {
-      data.forEach((contact) => {
-        if (contact.id === isUpdate.id) {
-          contact.name = formData.name;
-          contact.phoneNumber = formData.phoneNumber;
-        }
-      });
-    } else {
-      data.push({
-        id: uid(),
-        name: formData.name,
-        phoneNumber: formData.phoneNumber,
-      });
-    }
-
-    setContact(data);
-    setFormData({ name: "", phoneNumber: "" });
-    alert("Berhasil");
-    console.log("ini data masuk");
-  };
 
   function handleChange(event: any) {
     let data = { ...formData };
@@ -107,72 +73,7 @@ function App() {
           <h3>Contact</h3>
         </div>
         <div className="box">
-          {/* <Popup
-            trigger={<button className="addContact"> Add Contact </button>}
-            modal
-            nested
-          >
-            {(close: any) => (
-              <div className="modal">
-                <button className="close" onClick={close}>
-                  &times;
-                </button>
-                <div className="header"> Input Form </div>
-                <div className="content">
-                  Masukan kontak yang ingin disimpan
-                  <br />
-                  <form onSubmit={onSubmitFormHandler}>
-                    <input
-                      style={{ color: "black", margin: "10px" }}
-                      type="text"
-                      name="name"
-                      placeholder="Nama"
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-
-                    <input
-                      style={{ color: "black", margin: "10px" }}
-                      type="text"
-                      name="phoneNumber"
-                      placeholder="08xxxx"
-                      value={formData.phoneNumber}
-                      onChange={handleChange}
-                    />
-
-                    <div className="actions">
-                      <button className="save" type="submit">
-                        Save
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            )}
-          </Popup> */}
-          <form onSubmit={onSubmitFormHandler} className="inputUpdate">
-            <input
-              style={{ color: "black", margin: "10px" }}
-              type="text"
-              name="name"
-              placeholder="Nama"
-              value={formData.name}
-              onChange={handleChange}
-            />
-
-            <input
-              style={{ color: "black", margin: "10px" }}
-              type="text"
-              name="phoneNumber"
-              placeholder="08xxxx"
-              value={formData.phoneNumber}
-              onChange={handleChange}
-            />
-
-            <button className="save" type="submit">
-              Save
-            </button>
-          </form>
+          <PopupInput contacts={contacts} setContact={setContact} />
         </div>
       </div>
 
@@ -191,7 +92,7 @@ function App() {
         data={searchDataInput.length < 1 ? contacts : searchResult}
         handleDeleteContact={handleDeleteContact}
         handleUpdateContact={handleUpdateContact}
-        onSubmitFormHandler={onSubmitFormHandler}
+        setContact={setContact}
       />
     </div>
   );

@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import "./styles/list.css";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
+import PopupUpdate from "./components/PopupUpdate";
 
 export default function List(props: any) {
-  const { data, handleDeleteContact, handleUpdateContact } = props;
+  const { data, handleDeleteContact, handleUpdateContact, setContact } = props;
 
   return (
     <div>
@@ -20,13 +23,11 @@ export default function List(props: any) {
               >
                 Hapus
               </button>
-
-              <button
-                className="update"
-                onClick={() => handleUpdateContact(contact.id)}
-              >
-                Update
-              </button>
+              <PopupUpdate
+                contacts={data}
+                setContact={setContact}
+                id={contact.id}
+              />
             </div>
           </div>
         );
