@@ -1,0 +1,21 @@
+.hapus {
+  border: 0;
+  padding: 10px;
+  background-color: brown;
+  color: white;
+  border-radius: 5px;
+}
+
+.update {
+  border: 0;
+  padding: 10px;
+  background-color: peru;
+  color: white;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.lefBox {
+  margin-left: 50px;
+  text-align: left;
+}
