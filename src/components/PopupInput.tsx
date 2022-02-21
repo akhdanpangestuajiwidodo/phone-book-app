@@ -22,25 +22,6 @@ type propsInputPopUp = {
 export default function PopupInput(props: propsInputPopUp) {
   const [formData, setFormData] = useState(sub);
 
-  //   //Hooks updateStatus
-  //   const [isUpdate, setIsUpdate] = useState({ id: null, status: false });
-
-  //   function handleUpdateContact(id: any) {
-  //     let foundData = props.contacts.find((contact: any) => contact.id === id);
-  //     setIsUpdate({ id: id, status: true });
-  //     setFormData({ name: foundData?.name, phoneNumber: foundData?.phoneNumber });
-  //   }
-
-  //onSubmitForm or save Data
-
-  //   if (props.id !== "" || props.id !== null) {
-  //     let foundData = props.contacts.find(
-  //       (contact: any) => contact.id === props.id
-  //     );
-  //     setIsUpdate({ id: props.id, status: true });
-  //     setFormData({ name: foundData?.name, phoneNumber: foundData?.phoneNumber });
-  //   }
-
   const onSubmitFormHandler = (event: any) => {
     event.preventDefault();
 
@@ -51,21 +32,6 @@ export default function PopupInput(props: propsInputPopUp) {
       return false;
     }
 
-    // if (isUpdate.status) {
-    //   data.forEach((contact) => {
-    //     if (contact.id === isUpdate.id) {
-    //       contact.name = formData.name;
-    //       contact.phoneNumber = formData.phoneNumber;
-    //     }
-    //   });
-    // } else {
-    //   data.push({
-    //     id: uid(),
-    //     name: formData.name,
-    //     phoneNumber: formData.phoneNumber,
-    //   });
-    // }
-
     data.push({
       id: uid(),
       name: formData.name,
@@ -75,7 +41,6 @@ export default function PopupInput(props: propsInputPopUp) {
     props.setContact(data);
     setFormData({ name: "", phoneNumber: "" });
     alert("Berhasil");
-    console.log("ini data masuk");
   };
 
   function handleChange(event: any) {

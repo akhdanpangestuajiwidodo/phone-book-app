@@ -25,25 +25,7 @@ function App() {
   //Hooks Contacts
   const [searchResult, setSearchResult] = useState(result);
 
-  //Hooks Form Contacts
-  const [formData, setFormData] = useState(sub);
-
-  //Hooks updateStatus
-  const [isUpdate, setIsUpdate] = useState({ id: null, status: false });
-
   const [show, setShow] = useState(false);
-
-  function handleChange(event: any) {
-    let data = { ...formData };
-    data[event.target.name] = event.target.value;
-    setFormData(data);
-  }
-
-  function handleUpdateContact(id: any) {
-    let foundData = contacts.find((contact: any) => contact.id === id);
-    setIsUpdate({ id: id, status: true });
-    setFormData({ name: foundData?.name, phoneNumber: foundData?.phoneNumber });
-  }
 
   //Hooks Search Contacts
   const [searchDataInput, setsearchDataInput] = useState("");
@@ -103,7 +85,6 @@ function App() {
       <List
         data={searchDataInput.length < 1 ? contacts : searchResult}
         handleDeleteContact={handleDeleteContact}
-        handleUpdateContact={handleUpdateContact}
         setContact={setContact}
       />
     </div>
