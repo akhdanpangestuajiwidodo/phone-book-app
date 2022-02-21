@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "reactjs-popup/dist/index.css";
 import List from "./List";
 import PopupInput from "./components/PopupInput";
+import Modal from "./components/Modal";
 
 type formDataItem = {
   id: string;
@@ -30,6 +31,8 @@ function App() {
   //Hooks updateStatus
   const [isUpdate, setIsUpdate] = useState({ id: null, status: false });
 
+  const [show, setShow] = useState(false);
+
   function handleChange(event: any) {
     let data = { ...formData };
     data[event.target.name] = event.target.value;
@@ -48,7 +51,10 @@ function App() {
   const onSearchSubmit = (input: string) => {
     let data = [...contacts];
     const filter = data.filter((el) => {
-      return el.name.toLocaleLowerCase().includes(input.toLocaleLowerCase());
+      return (
+        el.name.toLocaleLowerCase().includes(input.toLocaleLowerCase()) ||
+        el.phoneNumber.toLocaleLowerCase().includes(input.toLocaleLowerCase())
+      );
     });
     setSearchResult(filter);
   };
@@ -73,7 +79,13 @@ function App() {
           <h3>Contact</h3>
         </div>
         <div className="box">
-          <PopupInput contacts={contacts} setContact={setContact} />
+          <button onClick={() => setShow(true)}>Add Data</button>
+          <Modal
+            setShow={setShow}
+            show={show}
+            contacts={contacts}
+            setContact={setContact}
+          />
         </div>
       </div>
 
