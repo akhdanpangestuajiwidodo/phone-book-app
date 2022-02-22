@@ -22,6 +22,15 @@ const Modal = (props: any) => {
       alert("Harus Diisi yah");
       props.setShow(true);
       return false;
+    } else {
+      if (
+        formData.phoneNumber.length < 10 ||
+        formData.phoneNumber.length > 12
+      ) {
+        alert("Nomor Telepon 10-12 Karakter");
+        props.setShow(true);
+        return false;
+      }
     }
 
     data.push({
