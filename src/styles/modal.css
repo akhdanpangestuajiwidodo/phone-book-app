@@ -30,3 +30,48 @@
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
+
+.save {
+  border: 0;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  width: 100%;
+  margin-left: 0;
+}
+
+.button-close {
+  border: 0;
+  padding: 10px;
+  background-color: brown;
+  color: white;
+  border-radius: 5px;
+  margin-left: 0;
+}
+
+.search-nama {
+  padding: 7px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f3f3f4;
+}
+
+.search-phone {
+  padding: 7px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f3f3f4;
+}
+
+.actions {
+  margin-top: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 10px;
+}
+
+.modal-footer {
+  padding-left: 50px;
+  padding-right: 50px;
+}

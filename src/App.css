@@ -1,7 +1,5 @@
 .App {
-  padding: 30px;
   margin: auto;
-  width: 50%;
   text-align: center;
   background-color: white;
   border-radius: 10px;
@@ -9,19 +7,32 @@
   box-shadow: 0 1px 10px black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #2196f3;
+  font-size: 20px;
+  color: white;
+  border-radius: 10px 10px 0 0;
 }
 
-.container {
+.title-h4 {
+  font-size: 17px;
+}
+
+.container-app {
   display: flex;
   margin: 0 auto;
-  border: 1px solid black;
 }
 .box {
   flex-grow: 1;
   margin: 5px;
+}
+
+.leftBox {
+  margin-left: 50px;
+  text-align: left;
+  margin-top: 0;
 }
 .hapus {
   margin-top: 40px;
@@ -32,7 +43,6 @@
   color: white;
   border: none;
   padding: 10px;
-  margin-top: 12px;
   border-radius: 5px;
 }
 
@@ -48,13 +58,39 @@
   width: 30%;
 }
 
-.save {
+.addContact {
   border: 0;
   padding: 10px;
-  background-color: green;
+  background-color: #02a8f6;
   color: white;
   border-radius: 5px;
   margin-left: 10px;
+}
+
+.segment-search {
+  margin-top: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 20px;
+}
+
+.searchContact {
+  padding: 7px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f3f3f4;
+  width: 100%;
+}
+
+.parent-container {
+  width: 60%;
+  margin: auto;
+}
+
+.app-footer {
+  background-color: #2196f3;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

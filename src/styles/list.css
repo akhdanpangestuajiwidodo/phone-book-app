@@ -1,3 +1,9 @@
+.container-list {
+  display: flex;
+  margin: 0 auto;
+  border-bottom: 1px solid #c0c0c5;
+}
+
 .hapus {
   border: 0;
   padding: 10px;
@@ -9,4 +15,23 @@
 .lefBox {
   margin-left: 50px;
   text-align: left;
+}
+
+.updateContact {
+  border: 0;
+  background-color: #d4b710;
+  color: white;
+  border-radius: 5px;
+  margin-left: 10px;
+  padding: 8px;
+}
+
+.img-delete {
+  width: 18px;
+  height: 18px;
+}
+
+.img-update {
+  width: 20px;
+  height: 20px;
 }

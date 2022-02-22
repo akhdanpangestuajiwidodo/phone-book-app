@@ -2,18 +2,12 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import "reactjs-popup/dist/index.css";
 import List from "./List";
-import PopupInput from "./components/PopupInput";
 import Modal from "./components/Modal";
 
 type formDataItem = {
   id: string;
   name: string;
   phoneNumber: string;
-};
-
-let sub: { [key: string]: any } = {
-  name: null,
-  phoneNumber: null,
 };
 
 function App() {
@@ -54,39 +48,46 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Phone Book App</h1>
-      <div className="container">
-        <div className="box">
-          <h3>Contact</h3>
+    <div className="parent-container">
+      <div className="App">
+        <h1 className="title">Phone Book App</h1>
+        <div className="container-app">
+          <div className="leftBox box">
+            <h3 className="title-h4">Contact</h3>
+          </div>
+          <div className="box">
+            <button onClick={() => setShow(true)} className="addContact">
+              Add Contact
+            </button>
+            <Modal
+              setShow={setShow}
+              show={show}
+              contacts={contacts}
+              setContact={setContact}
+            />
+          </div>
         </div>
-        <div className="box">
-          <button onClick={() => setShow(true)}>Add Data</button>
-          <Modal
-            setShow={setShow}
-            show={show}
-            contacts={contacts}
-            setContact={setContact}
-          />
-        </div>
-      </div>
 
-      <form className="formSearch">
-        <input
-          style={{ color: "black", margin: "10px" }}
-          type="text"
-          name="searchInputData"
-          value={searchDataInput}
-          placeholder="Ini Search"
-          onChange={(e) => setsearchDataInput(e.target.value)}
+        <div className="segment-search">
+          <form className="formSearch">
+            <input
+              className="searchContact"
+              type="text"
+              name="searchInputData"
+              value={searchDataInput}
+              placeholder="Search"
+              onChange={(e) => setsearchDataInput(e.target.value)}
+            />
+          </form>
+        </div>
+
+        <List
+          data={searchDataInput.length < 1 ? contacts : searchResult}
+          handleDeleteContact={handleDeleteContact}
+          setContact={setContact}
         />
-      </form>
-
-      <List
-        data={searchDataInput.length < 1 ? contacts : searchResult}
-        handleDeleteContact={handleDeleteContact}
-        setContact={setContact}
-      />
+        <div className="app-footer"></div>
+      </div>
     </div>
   );
 }

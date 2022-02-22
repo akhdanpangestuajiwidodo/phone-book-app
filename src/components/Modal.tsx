@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../styles/modal.css";
 import { uid } from "uid";
 
@@ -64,7 +63,7 @@ const Modal = (props: any) => {
   return (
     <div className="modal">
       <div className="modal-content">
-        <div className="modal-header">Modal Title</div>
+        <div className="modal-header">Modal Add Contact</div>
         <div className="modal-body">
           <form
             onSubmit={(e) => {
@@ -72,6 +71,7 @@ const Modal = (props: any) => {
             }}
           >
             <input
+              className="search-nama"
               style={{ color: "black", margin: "10px" }}
               type="text"
               name="name"
@@ -81,6 +81,7 @@ const Modal = (props: any) => {
             />
 
             <input
+              className="search-phone"
               style={{ color: "black", margin: "10px" }}
               type="text"
               name="phoneNumber"
@@ -96,7 +97,7 @@ const Modal = (props: any) => {
           </form>
         </div>
         <div className="modal-footer">
-          <button className="button" onClick={closeModal}>
+          <button className="button-close" onClick={closeModal}>
             Close
           </button>
         </div>

@@ -76,6 +76,7 @@ const ModalUpdate = (props: any) => {
             }}
           >
             <input
+              className="search-nama"
               style={{ color: "black", margin: "10px" }}
               type="text"
               name="name"
@@ -85,6 +86,7 @@ const ModalUpdate = (props: any) => {
             />
 
             <input
+              className="search-phone"
               style={{ color: "black", margin: "10px" }}
               type="text"
               name="phoneNumber"
@@ -100,7 +102,7 @@ const ModalUpdate = (props: any) => {
           </form>
         </div>
         <div className="modal-footer">
-          <button className="button" onClick={closeModal}>
+          <button className="button-close" onClick={closeModal}>
             Close
           </button>
         </div>
