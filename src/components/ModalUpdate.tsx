@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../styles/modal.css";
+import Cookies from "js-cookie";
 
 let sub: { [key: string]: any } = {
   name: null,
@@ -32,10 +33,7 @@ const ModalUpdate = (props: any) => {
       props.setShow(true);
       return false;
     } else {
-      if (
-        formData.phoneNumber.length < 10 ||
-        formData.phoneNumber.length > 12
-      ) {
+      if (phoneNumber.length < 10 || phoneNumber.length > 12) {
         alert("Nomor Telepon 10-12 Karakter");
         props.setShow(true);
         return false;
@@ -50,6 +48,7 @@ const ModalUpdate = (props: any) => {
     });
 
     props.setContact(data);
+    Cookies.set("contacts", JSON.stringify(data));
     setFormData({ name: "", phoneNumber: "" });
     setTimeout(() => {
       showAlertSuccess();
