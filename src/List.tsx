@@ -14,8 +14,16 @@ export default function List(props: any) {
         return (
           <div className="borderBottom container-list">
             <div className="lefBox box">
-              <h3>{contact.name}</h3>
-              <p>{contact.phoneNumber}</p>
+              <h3 className="name-h3">{contact.name}</h3>
+              <div className="segment-phoneNumber">
+                <p>
+                  <img
+                    src={require("./assets/phone-call.png")}
+                    className="img-phone"
+                  />
+                </p>
+                <p>{contact.phoneNumber}</p>
+              </div>
             </div>
             <div className="box">
               <button
