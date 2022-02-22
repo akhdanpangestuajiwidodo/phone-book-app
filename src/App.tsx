@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "reactjs-popup/dist/index.css";
 import List from "./List";
 import Modal from "./components/Modal";
+import Cookies from "js-cookie";
 
 type formDataItem = {
   id: string;
@@ -45,6 +46,7 @@ function App() {
   function handleDeleteContact(id: string) {
     const contactAfterDelete = contacts.filter((contact) => contact.id !== id);
     setContact(contactAfterDelete);
+    Cookies.set("contacts", JSON.stringify(contactAfterDelete));
   }
 
   return (

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/modal.css";
 import { uid } from "uid";
+import Cookies from "js-cookie";
 
 let sub: { [key: string]: any } = {
   name: null,
@@ -9,6 +10,11 @@ let sub: { [key: string]: any } = {
 
 const Modal = (props: any) => {
   const [formData, setFormData] = useState(sub);
+
+  useEffect(() => {
+    getContactFromCookies();
+  }, []);
+
   if (!props.show) {
     return null;
   }
@@ -41,6 +47,7 @@ const Modal = (props: any) => {
 
     props.setContact(data);
     setFormData({ name: "", phoneNumber: "" });
+    Cookies.set("contacts", JSON.stringify(data));
     setTimeout(() => {
       showAlertSuccess();
     }, 200);
@@ -69,6 +76,16 @@ const Modal = (props: any) => {
     data[event.target.name] = event.target.value;
     setFormData(data);
   }
+
+  function getContactFromCookies() {
+    let cookies = Cookies.get("contacts");
+    if (cookies == undefined) {
+      return props.contacts;
+    } else {
+      props.setContact(JSON.parse(Cookies.get("contacts") as string));
+    }
+  }
+
   return (
     <div className="modal">
       <div className="modal-content">
